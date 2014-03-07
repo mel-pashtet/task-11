@@ -1,0 +1,22 @@
+{
+   "repositories": [
+    {
+            "type":"package",
+            "package":{
+                "name":"phpsass",
+                "version":"dev-latest",
+                "source":{
+                    "type":"git",
+                    "url": "https://github.com/richthegeek/phpsass",
+                    "reference":"latest"
+                }
+            }
+        }
+    ],
+    
+    "require": {
+    "richthegeek/phpsass": "*"
+    }
+}
+
+

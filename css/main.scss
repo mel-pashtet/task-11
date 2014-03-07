@@ -1,0 +1,105 @@
+$href_color = blue;
+
+@mixin border-radius($radius = 15px){  
+
+  -moz-border-radius: $radius;
+
+  -webkit-border-radius: $radius;
+
+  border-radius: $radius;
+}
+body
+{	
+	margin: 0;
+	padding-left: 0px;
+	color: #555;
+	font: normal 10pt Arial,Helvetica,sans-serif;
+		
+		
+}
+h1{
+      font: {
+        size: 30px;
+        style: italic;
+        weight: bold;
+        family: Arial, sans-serif;
+      }
+    color: #400000 ;
+    padding-left: 10px; 
+}
+h2{
+    @extend h1;
+    color: black;
+    text-decoration: underline;
+}
+
+
+.update{
+	margin-right: 5px;
+
+}
+.delete{
+	margin-left: 5px ;
+}
+.footer{
+	color: black;
+	text-align: center;
+	text-shadow: #800000  0 2px;
+}
+.header{
+	
+	p{
+		@extend h1;
+		font-size: 15px;        
+		
+		}
+		
+
+}
+.comments{
+	p{
+		color: black;
+		text-align: left;
+		letter-spacing: 2px;
+		
+	}
+	
+	 
+}
+
+.menu{
+	@include border-radius;
+	text-transform: uppercase;
+	font-weight: bold;
+		a{
+			color: darken($href_color, 10%);
+			padding-top: 20px;
+			
+			&:hover{
+				text:{
+					decoration: underline;
+			    	shadow: black 0 1px;	
+				}
+				font-size: 10px;
+				
+						
+			}
+			
+		}
+	
+	
+}
+.content{
+	@include border-radius;
+	padding-left: 20px;
+	
+}
+.notes{
+	background: #E8E8E8 ;
+}
+.list{
+	@extend .notes;
+	@include border-radius(8px);
+	padding: 20px;
+	margin-bottom: 20px;
+}

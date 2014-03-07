@@ -1,0 +1,33 @@
+.header
+	%h2
+		- echo Yii::t('default', 'Welcome to')." ".Yii::t('default', CHtml::encode(Yii::app()->name) );
+	
+	- if(!Yii::app()->user->isGuest)
+		%p
+			- echo Yii::app()->user->name." ".Yii::t('default', 'last logged in').": ".Yii::app()->dateFormatter->format('EEEE, dd-MMMM-yyyy HH:mm:ss', Yii::app()->user->lastLoginTime);
+.list
+	:php
+		$this->widget('bootstrap.widgets.TbListView', array(
+				'dataProvider'=>$dataProvider,
+				'ajaxUpdate'=>false,            
+				'itemView'=>'_view',
+				'pager'=>array('class' => 'bootstrap.widgets.TbPager',
+				'header'=>false,
+				'maxButtonCount'=>'5',
+				),
+		));
+%div
+	:php
+		$this->widget('bootstrap.widgets.TbButton', array(
+				'type'=>'success', 
+				'icon'=>'plus',
+				'buttonType'=>'link',
+				'url'=>CController::createUrl('notes/create'),
+				'label'=>Yii::t('default', 'Add notes')));
+.pull-right
+	%form{:action => "search", :method => "get"}
+		%fieldset
+		%label{:for => "search"}
+			- echo Yii::t('default', 'word for search');
+		%input{:name => "search", :type => "text",class=>"search-query"}
+		%input{:type => "submit",class=>"btn btn-primary", :value => "search"}

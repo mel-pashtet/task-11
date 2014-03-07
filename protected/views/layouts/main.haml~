@@ -1,0 +1,45 @@
+!!! 5 utf-8
+%html
+	%head		
+
+		%title
+			- echo CHtml::encode($this->pageTitle);
+	%body
+		.container-fluid
+			.page-header
+				%h1
+					:php
+						echo Yii::t('default', CHtml::encode(Yii::app()->name));
+			.row-fluid
+				.span2.well
+					:php
+						$this->widget('bootstrap.widgets.TbMenu', array(
+							'type' => 'list',
+							'items' => array(
+								array(
+								'label' => Yii::t('default','Application'),
+								'itemOptions' => array('class' => 'nav-header')
+								),
+								array(
+								'label' => Yii::t('default','Home'),
+								'url'=>array('/notes/index'),
+								'itemOptions' => array('class' => 'nav-header')
+								),"",
+								array(
+								'label' => Yii::t('default','User'),
+								'itemOptions' => array('class' => 'nav-header')
+								),
+								array('label' => Yii::t('default','registration'), 'url'=>array('/users/create')),
+								array('label'=>Yii::t('default','Login'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+								array('label'=>Yii::t('default','Logout').'('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+							)
+							)
+						);
+				.span10.well
+					:php
+						echo $content;
+			.pull-right
+				Copyright &copy;
+				- echo date('Y');
+				by My Company.<br/>
+				- echo Yii::powered(); 

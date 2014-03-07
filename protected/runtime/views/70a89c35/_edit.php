@@ -1,0 +1,34 @@
+<?php
+require_once '/var/www/protected/extensions/phamlp/vendors/phamlp/haml/HamlHelpers.php';
+?><?php
+$form = $this->beginWidget(
+'bootstrap.widgets.TbActiveForm',
+array(
+'id' => 'verticalForm',
+'enableAjaxValidation'=>false,
+'enableClientValidation'=>true,
+'clientOptions'=>array(
+'validateOnSubmit'=>true,
+),
+'htmlOptions' => array('class' => 'well'), // for inset effect
+)
+);
+
+echo $form->textFieldRow($model, 'notes_name', array('class' => 'span3'));
+echo $form->textAreaRow($model, 'notes_value', array('class' => 'span3'));
+echo $form->hiddenField($model, 'notes_author', array('class' => 'span3'));
+echo $form->hiddenField($model, 'notes_update', array('class' => 'span3'));
+echo $form->hiddenField($model, 'author_id', array('class' => 'span3'));
+?>
+<div>
+<?php
+$this->widget(
+'bootstrap.widgets.TbButton',
+array('buttonType' => 'submit', 'label' => Yii::t('default','save'), 'type' => 'primary', 'size'=>'large', 'icon'=>'ok')
+);
+?>
+</div><?php
+$this->endWidget();
+unset($form);
+
+?>
